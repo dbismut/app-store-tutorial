@@ -1,0 +1,68 @@
+.page-post .post {
+  position: absolute;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100vh;
+  background: #fff;
+
+  .cover-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: flex;
+    overflow: hidden;
+    align-items: flex-end;
+    max-height: 64vh;
+    width: 100%;
+    height: 100%;
+
+    .cover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+    }
+  }
+
+  .content {
+    position: absolute;
+    top: 64%;
+    padding: 20px;
+    background: #fff;
+    line-height: 1.8;
+    transition: opacity 800ms 200ms ease;
+  }
+}
+
+.page-post {
+  .close {
+    position: absolute;
+    top: 20px;
+    z-index: 1000;
+    margin-left: 20px;
+    width: 36px;
+    height: 36px;
+    border-radius: 18px;
+    background: #fff;
+    opacity: 0.7;
+    cursor: pointer;
+    transition: opacity 350ms ease;
+    &::after,
+    &::before {
+      position: absolute;
+      top: 17px;
+      left: 8px;
+      width: 20px;
+      height: 3px;
+      border-radius: 1.5px;
+      background: #000;
+      content: '';
+      transform: rotateZ(45deg);
+    }
+    &::before {
+      transform: rotateZ(-45deg);
+    }
+  }
+}

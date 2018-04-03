@@ -1,0 +1,32 @@
+{
+  "name": "app-store-tutorial",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0",
+    "react-redux": "^5.0.7",
+    "react-router5": "^5.5.2",
+    "react-scripts": "1.1.2",
+    "react-transition-group": "^2.3.0",
+    "redux": "^3.7.2",
+    "redux-logger": "^3.0.6",
+    "redux-router5": "^5.2.1",
+    "router5": "^5.8.3",
+    "router5-transition-path": "^5.1.1"
+  },
+  "scripts": {
+    "build-css": "node-sass-chokidar src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
+    "server": "node server/server.js",
+    "build": "npm run build-css && react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "node-sass-chokidar": "^1.2.2",
+    "npm-run-all": "^4.1.2"
+  }
+}

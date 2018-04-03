@@ -1,0 +1,34 @@
+.App {
+  position: relative;
+}
+
+.full-width {
+  max-width: 480px;
+  width: 100vw;
+}
+
+.cover {
+  position: relative;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+}
+
+.page {
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+h1.title {
+  position: relative;
+  z-index: 10;
+  margin: 0;
+  margin: 50px 20px;
+  width: 70%;
+  color: #fff;
+  font-size: 3em;
+  line-height: 0.9;
+}

@@ -1,0 +1,21 @@
+.page-list {
+  .list {
+    display: flex;
+    flex-direction: column;
+    padding: 50px 20px;
+    width: 100%;
+  }
+
+  .preview {
+    display: flex;
+    align-items: flex-end;
+    flex-basis: 440px;
+    flex-shrink: 0;
+    margin: 15px 0;
+    border-radius: 16px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+
+    user-select: none;
+  }
+}
