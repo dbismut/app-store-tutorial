@@ -12,10 +12,12 @@ import './App.css';
 
 class App extends PureComponent {
   render() {
-    const { route, navigateTo } = this.props;
+    const { route, previousRoute, navigateTo } = this.props;
     return (
       <div className="App">
-        <List navigateTo={navigateTo} />
+        {(route.name === 'home' || previousRoute) && (
+          <List navigateTo={navigateTo} />
+        )}
         <TransitionGroup>
           {route.name === 'post' && <Post navigateTo={navigateTo} />}
         </TransitionGroup>
