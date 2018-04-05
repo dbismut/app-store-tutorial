@@ -6,6 +6,7 @@
   height: 100vh;
   // border: 4px solid red;
   background: #fff;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.2);
 
   .cover-wrapper {
     position: absolute;
@@ -44,12 +45,10 @@
     visibility: hidden;
   }
 
-  &.post-enter,
-  &.post-exit {
+  &.post-enter {
     .post {
       position: fixed;
       overflow: hidden;
-      box-shadow: 0 0 60px rgba(0, 0, 0, 0.2);
       pointer-events: none;
     }
   }
