@@ -72,13 +72,13 @@ class Post extends PureComponent {
     // This happens when loading the Post directly without
     // going through the list page first.
 
+    const to = this.getTo();
+    const from = this.getPreviewPosition();
+
     const { image } = this.props.route.data.post;
 
     const img = new Image();
     img.src = `/img/${image}`;
-
-    const to = this.getTo();
-    const from = this.getPreviewPosition();
 
     const scrollTop = windowScroll.get('top');
     this.pageListStyler.set({ position: 'fixed', top: -scrollTop });
