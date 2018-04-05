@@ -75,14 +75,14 @@ class Post extends PureComponent {
     const to = this.getTo();
     const from = this.getPreviewPosition();
 
+    const scrollTop = windowScroll.get('top');
+    this.pageListStyler.set({ position: 'fixed', top: -scrollTop });
+    windowScroll.set('top', 0);
+
     const { image } = this.props.route.data.post;
 
     const img = new Image();
     img.src = `/img/${image}`;
-
-    const scrollTop = windowScroll.get('top');
-    this.pageListStyler.set({ position: 'fixed', top: -scrollTop });
-    windowScroll.set('top', 0);
 
     if (!img.complete) {
       img.onload = () => this.executeTransition(node, done, from, to);
