@@ -4,6 +4,7 @@
   z-index: 100;
   width: 100%;
   height: 100vh;
+  // border: 4px solid red;
   background: #fff;
 
   .cover-wrapper {
@@ -29,10 +30,27 @@
   .content {
     position: absolute;
     top: 64%;
+    margin-left: 50%;
     padding: 20px;
     background: #fff;
     line-height: 1.8;
     transition: opacity 800ms 200ms ease;
+    transform: translateX(-50%);
+  }
+}
+
+.page-post {
+  &.post-enter .post {
+    visibility: hidden;
+  }
+
+  &.post-enter,
+  &.post-exit {
+    .post {
+      position: fixed;
+      overflow: hidden;
+      pointer-events: none;
+    }
   }
 }
 
