@@ -35,15 +35,6 @@ class Post extends PureComponent {
     };
   };
 
-  getTo = () => {
-    return {
-      top: 0,
-      height: window.innerHeight,
-      width: document.body.offsetWidth,
-      borderRadius: 0
-    };
-  };
-
   onEnter = () => {
     const { post } = this.props.route.data;
 
