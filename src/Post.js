@@ -10,6 +10,7 @@ import scroll from 'stylefire/scroll';
 import './Post.css';
 
 const windowScroll = scroll();
+const myEasing = cubicBezier(0.8, -0.25, 0.33, 1.52);
 
 class Post extends PureComponent {
   from = {};
@@ -94,7 +95,8 @@ class Post extends PureComponent {
     tween({
       to: this.to,
       from: this.from,
-      duration: 1000
+      duration: 800,
+      ease: myEasing
     }).start({
       update: this.postStyler.set,
       complete: () => {
@@ -109,10 +111,6 @@ class Post extends PureComponent {
   };
 
   executeExitingTransition = (node, done) => {
-    // we're changing our spring to a tween
-    // with a very long duration to check
-    // everything is working properly
-
     spring({
       from: this.from,
       to: this.to,
@@ -128,6 +126,7 @@ class Post extends PureComponent {
       complete: () => {
         this.preview.style.visibility = 'visible';
 
+        // freeing the page list node
         const scrollTop = -this.pageListStyler.get('top');
         this.pageListStyler.set({ position: 'absolute', top: 0 });
         windowScroll.set('top', scrollTop);
