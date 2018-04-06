@@ -12,20 +12,15 @@ import './Post.css';
 const windowScroll = scroll();
 
 class Post extends PureComponent {
+  from = {};
+  to = {};
+
   componentDidMount() {
     this.postStyler = styler(this.post);
     this.postScroll = scroll(this.post);
-
-    const { post } = this.props.route.data;
-
-    this.preview = document.querySelector(`.preview[data-id="${post.id}"]`);
-    if (this.preview) {
-      this.pageList = document.querySelector('.page-list');
-      this.pageListStyler = styler(this.pageList);
-    }
   }
 
-  getPreviewPosition = () => {
+  getPreviewStyleAndPosition = () => {
     const {
       top: previewTop,
       width: previewWidth,
@@ -49,10 +44,37 @@ class Post extends PureComponent {
     };
   };
 
-  executeTransition = (node, done, from, to) => {
-    this.postStyler.set({ ...from, visibility: 'visible' });
+  onEnter = () => {
+    const { post } = this.props.route.data;
 
-    tween({ to, from, duration: 1000 }).start({
+    this.preview = document.querySelector(`.preview[data-id="${post.id}"]`);
+    if (this.preview) {
+      this.pageList = document.querySelector('.page-list');
+      this.pageListStyler = styler(this.pageList);
+    }
+
+    this.from = this.getPreviewStyleAndPosition();
+    this.to = {
+      top: 0,
+      height: window.innerHeight,
+      width: document.body.offsetWidth,
+      borderRadius: 0,
+      scale: 1
+    };
+
+    const scrollTop = windowScroll.get('top');
+    this.pageListStyler.set({ position: 'fixed', top: -scrollTop });
+    windowScroll.set('top', 0);
+  };
+
+  executeEnteringTransition = (node, done) => {
+    this.postStyler.set({ ...this.from, visibility: 'visible' });
+
+    tween({
+      to: this.to,
+      from: this.from,
+      duration: 1000
+    }).start({
       update: this.postStyler.set,
       complete: () => {
         tween({ from: windowScroll.get('top'), to: 0 }).start({
@@ -72,23 +94,16 @@ class Post extends PureComponent {
     // This happens when loading the Post directly without
     // going through the list page first.
 
-    const to = this.getTo();
-    const from = this.getPreviewPosition();
-
-    const scrollTop = windowScroll.get('top');
-    this.pageListStyler.set({ position: 'fixed', top: -scrollTop });
-    windowScroll.set('top', 0);
-
     const { image } = this.props.route.data.post;
 
     const img = new Image();
     img.src = `/img/${image}`;
 
     if (!img.complete) {
-      img.onload = () => this.executeTransition(node, done, from, to);
+      img.onload = () => this.executeEnteringTransition(node, done);
       return;
     }
-    this.executeTransition(node, done, from, to);
+    this.executeEnteringTransition(node, done);
   };
 
   render() {
@@ -106,6 +121,7 @@ class Post extends PureComponent {
     return (
       <CSSTransition
         {...transitionProps}
+        onEnter={this.onEnter}
         addEndListener={this.onAddEndListener}
         classNames="post"
       >
