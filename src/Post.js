@@ -88,7 +88,7 @@ class Post extends PureComponent {
   onAddEndListener = (node, done) => {
     if (!this.preview) return done();
     // This makes sure we don't run the animation when
-    // we don't have a preview element available in onEnter.
+    // we don't have a preview element available.
     // This happens when loading the Post directly without
     // going through the list page first.
 
