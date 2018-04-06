@@ -18,7 +18,7 @@ class App extends PureComponent {
         {(route.name === 'home' || previousRoute) && (
           <List navigateTo={navigateTo} />
         )}
-        <TransitionGroup style={{ opacity: 0.5 }}>
+        <TransitionGroup>
           {route.name === 'post' && <Post navigateTo={navigateTo} />}
         </TransitionGroup>
       </div>

@@ -52,6 +52,11 @@
       pointer-events: none;
     }
   }
+  &.post-enter-done {
+    .close {
+      position: fixed;
+    }
+  }
 }
 
 .page-post {
