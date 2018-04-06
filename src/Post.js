@@ -48,10 +48,10 @@ class Post extends PureComponent {
     const { post } = this.props.route.data;
 
     this.preview = document.querySelector(`.preview[data-id="${post.id}"]`);
-    if (this.preview) {
-      this.pageList = document.querySelector('.page-list');
-      this.pageListStyler = styler(this.pageList);
-    }
+    if (!this.preview) return;
+
+    this.pageList = document.querySelector('.page-list');
+    this.pageListStyler = styler(this.pageList);
 
     this.from = this.getPreviewStyleAndPosition();
     this.to = {
@@ -90,7 +90,7 @@ class Post extends PureComponent {
   onAddEndListener = (node, done) => {
     if (!this.preview) return done();
     // This makes sure we don't run the animation when
-    // we don't have a preview element available on mount.
+    // we don't have a preview element available in onEnter.
     // This happens when loading the Post directly without
     // going through the list page first.
 
