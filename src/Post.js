@@ -48,8 +48,6 @@ class Post extends PureComponent {
     const { post } = this.props.route.data;
 
     this.preview = document.querySelector(`.preview[data-id="${post.id}"]`);
-    if (!this.preview) return;
-
     this.pageList = document.querySelector('.page-list');
     this.pageListStyler = styler(this.pageList);
 
