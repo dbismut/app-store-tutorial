@@ -21,17 +21,14 @@ class Post extends PureComponent {
   }
 
   getPreviewStyleAndPosition = () => {
-    const {
-      top: previewTop,
-      width: previewWidth,
-      height: previewHeight
-    } = this.preview.getBoundingClientRect();
+    const { top, width, height } = this.preview.getBoundingClientRect();
 
     return {
-      top: previewTop,
-      width: previewWidth,
-      height: previewHeight,
-      borderRadius: 16
+      top,
+      width,
+      height,
+      borderRadius: 16,
+      scale: 1
     };
   };
 
