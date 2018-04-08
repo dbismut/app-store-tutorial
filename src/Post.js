@@ -27,8 +27,7 @@ class Post extends PureComponent {
       top,
       width,
       height,
-      borderRadius: 16,
-      scale: 1
+      borderRadius: 16
     };
   };
 
@@ -44,8 +43,7 @@ class Post extends PureComponent {
       top: 0,
       height: window.innerHeight,
       width: document.body.offsetWidth,
-      borderRadius: 0,
-      scale: 1
+      borderRadius: 0
     };
 
     const scrollTop = windowScroll.get('top');
