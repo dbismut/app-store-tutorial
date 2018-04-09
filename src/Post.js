@@ -55,8 +55,8 @@ class Post extends PureComponent {
     this.postStyler.set({ ...this.from, visibility: 'visible' });
 
     tween({
-      to: this.to,
       from: this.from,
+      to: this.to,
       duration: 1000
     }).start({
       update: this.postStyler.set,
