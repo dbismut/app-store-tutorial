@@ -84,8 +84,8 @@ class Post extends PureComponent {
     else hidePreview();
 
     tween({
-      to: this.to,
       from: this.from,
+      to: this.to,
       duration: 800,
       ease: myEasing
     }).start({
