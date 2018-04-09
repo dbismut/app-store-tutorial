@@ -6,6 +6,7 @@
   height: 100vh;
   // border: 4px solid red;
   background: #fff;
+  transition: box-shadow 350ms ease;
 
   .cover-wrapper {
     position: absolute;
@@ -52,9 +53,13 @@
       pointer-events: none;
     }
   }
+
   &.post-enter,
   &.post-exit,
   &.post-dragged {
+    .post {
+      box-shadow: 0 0 60px rgba(0, 0, 0, 0.2);
+    }
     .close {
       position: absolute;
     }
