@@ -45,23 +45,73 @@
     visibility: hidden;
   }
 
-  &.post-enter {
+  &.post-enter,
+  &.post-dragged {
     .post {
       position: fixed;
       overflow: hidden;
       pointer-events: none;
     }
   }
-  &.post-enter-done {
+  &.post-enter,
+  &.post-exit,
+  &.post-dragged {
     .close {
-      position: fixed;
+      position: absolute;
+    }
+  }
+
+  &.post-dragged .underlay {
+    background-color: transparent;
+
+    backdrop-filter: blur(20px);
+  }
+
+  &.post-exit,
+  &.post-enter {
+    .content,
+    .close,
+    .underlay {
+      opacity: 0;
+    }
+    .underlay {
+      transition-delay: 0;
+    }
+  }
+  &.post-enter-started {
+    .content,
+    .underlay {
+      opacity: 1;
+      transition-delay: 100ms;
+    }
+    .close {
+      opacity: 0.7;
     }
   }
 }
 
 .page-post {
+  .underlay {
+    position: fixed;
+    top: -10vh;
+    left: 0;
+    z-index: 0;
+    width: 100vw;
+    height: 120vh;
+    background-color: #fff;
+    transition: opacity 400ms ease;
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      content: '';
+    }
+  }
+
   .close {
-    position: absolute;
+    position: fixed;
     top: 20px;
     z-index: 1000;
     margin-left: 20px;
@@ -86,6 +136,13 @@
     }
     &::before {
       transform: rotateZ(-45deg);
+    }
+    &.invert {
+      background: #000;
+      &::after,
+      &::before {
+        background: #fff;
+      }
     }
   }
 }

@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "bowser": "^1.9.3",
+    "classnames": "^2.2.5",
     "popmotion": "^8.1.22",
+    "pressure": "^2.1.2",
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
     "react-redux": "^5.0.7",
