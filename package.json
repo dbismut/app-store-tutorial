@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "bowser": "^1.9.3",
     "popmotion": "^8.1.22",
     "react": "^16.3.0",
     "react-dom": "^16.3.0",

@@ -7,6 +7,8 @@ import { chain, composite, delay, spring, styler, tween } from 'popmotion';
 import { cubicBezier } from 'popmotion/easing';
 import scroll from 'stylefire/scroll';
 
+import browser from 'bowser';
+
 import './Post.css';
 
 const windowScroll = scroll();
@@ -76,7 +78,10 @@ class Post extends PureComponent {
 
   executeEnteringTransition = (node, done) => {
     this.postStyler.set({ ...this.from, visibility: 'visible' });
-    this.preview.style.visibility = 'hidden';
+
+    const hidePreview = () => (this.preview.style.visibility = 'hidden');
+    if (browser.safari) setImmediate(hidePreview);
+    else hidePreview();
 
     tween({
       to: this.to,
